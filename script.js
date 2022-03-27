@@ -96,7 +96,7 @@ function returnJoke() {
     return "Debugging: Removing the needles from the haystack.";
   }
 }
-
+// start
 $("#start-btn").click(function (event) {
   if (content.length) {
     content += "";
