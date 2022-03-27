@@ -41,6 +41,21 @@ recognition.onresult = function () {
   //   diagnostic.textContent = "Result received: " + textInput + ".";
   console.log(textInput);
 
+  if ( textInput == "hey rowdy"){
+    let greeting = "Hey Tomi, how are you?";
+    todaystime.text(greeting);
+    let utterance = new SpeechSynthesisUtterance(greeting);
+    speechSynthesis.speak(utterance);
+    recognition.stop();
+  }
+
+  if ( textInput == "I'm good how are you"){
+    let greeting2 = "I'm good Tomi";
+    todaystime.text(greeting2);
+    let utterance = new SpeechSynthesisUtterance(greeting2);
+    speechSynthesis.speak(utterance);
+    recognition.stop();
+  }
   if (
     textInput == "rowdy what day is it" ||
     textInput == "Rowdy what day is it"
