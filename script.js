@@ -43,13 +43,17 @@ recognition.onresult = function () {
 
   if (textInput == "Rowdy what day is it") {
     // diagnostic.textContent = textInput;
-    todaystime.text(
+
+    let todaysTime =
       date.toLocaleString("en-us", { weekday: "long" }) +
-        ", " +
-        date.toLocaleString("en-us", { month: "long" }) +
-        ", " +
-        date.getDate()
-    );
+      ", " +
+      date.toLocaleString("en-us", { month: "long" }) +
+      ", " +
+      date.getDate();
+    todaystime.text(todaysTime);
+    let utterance = new SpeechSynthesisUtterance(todaysTime);
+    speechSynthesis.speak(utterance);
+
     recognition.stop();
   }
 
@@ -60,7 +64,10 @@ recognition.onresult = function () {
     recognition.stop();
   }
   if (textInput == "Rowdy tell me a joke") {
-    todaystime.text("I'm not smart, i'm just artficially Intelligent");
+    let joke = returnJoke();
+    todaystime.text(joke);
+    let utterance = new SpeechSynthesisUtterance(joke);
+    speechSynthesis.speak(utterance);
     recognition.stop();
   }
   if (textInput == "Rowdy write a message") {
@@ -72,12 +79,30 @@ recognition.onresult = function () {
     recognition.continuous = true;
   }
 };
+// return a random bubbles color
+function returnJoke() {
+  let num = Math.random();
+  // 50% of jokes
+  if (num < 0.5) {
+    return "I'm not smart, i'm just artficially Intelligent";
+    // 50% of jokes
+  } else if (num < 0.99) {
+    return "Knock knock... Who’s, there?.. Interrupting cow... Interrupting c– MOO!";
+    // 50% of jokes
+  } else if (num < 0.97) {
+    return "I just saw my life flash before my eyes and all I could see was a close tag…";
+    // 50% of jokes
+  } else {
+    return "Debugging: Removing the needles from the haystack.";
+  }
+}
 
 $("#start-btn").click(function (event) {
   if (content.length) {
     content += "";
   }
-
+  //   let utterance = new SpeechSynthesisUtterance("Hello world!");
+  //   speechSynthesis.speak(utterance);
   recognition.start();
 });
 $("#stop-btn").click(function (event) {
