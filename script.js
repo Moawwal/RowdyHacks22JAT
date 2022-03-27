@@ -46,6 +46,9 @@ recognition.onresult = function () {
     todaystime.text(greeting);
     let utterance = new SpeechSynthesisUtterance(greeting);
     speechSynthesis.speak(utterance);
+
+    $("#start-btn").removeClass("btn btn-success btn-block");
+    $("#start-btn").addClass("btn btn-danger btn-block");
     recognition.stop();
   }
 
@@ -54,6 +57,9 @@ recognition.onresult = function () {
     todaystime.text(greeting2);
     let utterance = new SpeechSynthesisUtterance(greeting2);
     speechSynthesis.speak(utterance);
+
+    $("#start-btn").removeClass("btn btn-success btn-block");
+    $("#start-btn").addClass("btn btn-danger btn-block");
     recognition.stop();
   }
   if (
@@ -72,6 +78,8 @@ recognition.onresult = function () {
     let utterance = new SpeechSynthesisUtterance(todaysTime);
     speechSynthesis.speak(utterance);
 
+    $("#start-btn").removeClass("btn btn-success btn-block");
+    $("#start-btn").addClass("btn btn-danger btn-block");
     recognition.stop();
   }
 
@@ -86,6 +94,9 @@ recognition.onresult = function () {
     todaystime.text(timeToday);
     let utterance = new SpeechSynthesisUtterance(timeToday);
     speechSynthesis.speak(utterance);
+
+    $("#start-btn").removeClass("btn btn-success btn-block");
+    $("#start-btn").addClass("btn btn-danger btn-block");
     recognition.stop();
   }
   if (
@@ -96,6 +107,9 @@ recognition.onresult = function () {
     todaystime.text(joke);
     let utterance = new SpeechSynthesisUtterance(joke);
     speechSynthesis.speak(utterance);
+
+    $("#start-btn").removeClass("btn btn-success btn-block");
+    $("#start-btn").addClass("btn btn-danger btn-block");
     recognition.stop();
   }
   if (textInput == "write a message" || textInput == "Write a message") {
@@ -132,15 +146,20 @@ $("#start-btn").click(function (event) {
   }
   //   let utterance = new SpeechSynthesisUtterance("Hello world!");
   //   speechSynthesis.speak(utterance);
+  $("#start-btn").removeClass("btn btn-danger btn-block");
+  $("#start-btn").addClass("btn btn-success btn-block");
   recognition.start();
 });
 $("#stop-btn").click(function (event) {
   if (content.length) {
     content += "";
   }
+
   let utterance = new SpeechSynthesisUtterance(textbox.val());
   speechSynthesis.speak(utterance);
   textbox.val("");
 
+  $("#start-btn").removeClass("btn btn-success btn-block");
+  $("#start-btn").addClass("btn btn-danger btn-block");
   recognition.stop();
 });
