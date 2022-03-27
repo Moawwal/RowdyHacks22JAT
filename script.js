@@ -58,9 +58,13 @@ recognition.onresult = function () {
   }
 
   if (textInput == "Rowdy what time is it") {
-    todaystime.text(
-      date.toLocaleString("en-us", { hour: "2-digit", minute: "2-digit" })
-    );
+    let timeToday = date.toLocaleString("en-us", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    todaystime.text(timeToday);
+    let utterance = new SpeechSynthesisUtterance(timeToday);
+    speechSynthesis.speak(utterance);
     recognition.stop();
   }
   if (textInput == "Rowdy tell me a joke") {
@@ -96,7 +100,7 @@ function returnJoke() {
     return "Debugging: Removing the needles from the haystack.";
   }
 }
-// start
+
 $("#start-btn").click(function (event) {
   if (content.length) {
     content += "";
