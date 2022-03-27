@@ -41,7 +41,10 @@ recognition.onresult = function () {
   //   diagnostic.textContent = "Result received: " + textInput + ".";
   console.log(textInput);
 
-  if (textInput == "Rowdy what day is it") {
+  if (
+    textInput == "rowdy what day is it" ||
+    textInput == "Rowdy what day is it"
+  ) {
     // diagnostic.textContent = textInput;
 
     let todaysTime =
@@ -57,7 +60,10 @@ recognition.onresult = function () {
     recognition.stop();
   }
 
-  if (textInput == "Rowdy what time is it") {
+  if (
+    textInput == "rowdy what time is it" ||
+    textInput == "Rowdy what time is it"
+  ) {
     let timeToday = date.toLocaleString("en-us", {
       hour: "2-digit",
       minute: "2-digit",
@@ -67,14 +73,20 @@ recognition.onresult = function () {
     speechSynthesis.speak(utterance);
     recognition.stop();
   }
-  if (textInput == "Rowdy tell me a joke") {
+  if (
+    textInput == "rowdy tell me a joke" ||
+    textInput == "Rowdy tell me a joke"
+  ) {
     let joke = returnJoke();
     todaystime.text(joke);
     let utterance = new SpeechSynthesisUtterance(joke);
     speechSynthesis.speak(utterance);
     recognition.stop();
   }
-  if (textInput == "Rowdy write a message") {
+  if (
+    textInput == "rowdy write a message" ||
+    textInput == "Rowdy write a message"
+  ) {
     console.log("inside if");
     var current = event.resultIndex;
     var transcript = event.results[current][0].transcript;
@@ -87,13 +99,13 @@ recognition.onresult = function () {
 function returnJoke() {
   let num = Math.random();
   // 50% of jokes
-  if (num < 0.5) {
+  if (num < 0.4) {
     return "I'm not smart, i'm just artficially Intelligent";
     // 50% of jokes
-  } else if (num < 0.99) {
+  } else if (num < 0.6) {
     return "Knock knock... Who’s, there?.. Interrupting cow... Interrupting c– MOO!";
     // 50% of jokes
-  } else if (num < 0.97) {
+  } else if (num < 0.8) {
     return "I just saw my life flash before my eyes and all I could see was a close tag…";
     // 50% of jokes
   } else {
