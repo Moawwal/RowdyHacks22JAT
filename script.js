@@ -41,7 +41,7 @@ recognition.onresult = function () {
   //   diagnostic.textContent = "Result received: " + textInput + ".";
   console.log(textInput);
 
-  if ( textInput == "hey rowdy"){
+  if (textInput == "hey rowdy") {
     let greeting = "Hey Tomi, how are you?";
     todaystime.text(greeting);
     let utterance = new SpeechSynthesisUtterance(greeting);
@@ -49,7 +49,7 @@ recognition.onresult = function () {
     recognition.stop();
   }
 
-  if ( textInput == "I'm good how are you"){
+  if (textInput == "I'm good how are you") {
     let greeting2 = "I'm good Tomi";
     todaystime.text(greeting2);
     let utterance = new SpeechSynthesisUtterance(greeting2);
@@ -98,16 +98,14 @@ recognition.onresult = function () {
     speechSynthesis.speak(utterance);
     recognition.stop();
   }
-  if (
-    textInput == "rowdy write a message" ||
-    textInput == "Rowdy write a message"
-  ) {
+  if (textInput == "write a message" || textInput == "Write a message") {
     console.log("inside if");
     var current = event.resultIndex;
     var transcript = event.results[current][0].transcript;
     content += transcript;
     textbox.val(content);
-    recognition.continuous = true;
+
+    // recognition.continuous = true;
   }
 };
 // return a random bubbles color
@@ -140,6 +138,9 @@ $("#stop-btn").click(function (event) {
   if (content.length) {
     content += "";
   }
+  let utterance = new SpeechSynthesisUtterance(textbox.val());
+  speechSynthesis.speak(utterance);
+  textbox.val("");
 
   recognition.stop();
 });
