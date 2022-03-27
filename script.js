@@ -42,7 +42,7 @@ recognition.onresult = function () {
   console.log(textInput);
 
   if (textInput == "hey rowdy") {
-    let greeting = "Hey Tomi, how are you?";
+    let greeting = "Hey, how are you?";
     todaystime.text(greeting);
     let utterance = new SpeechSynthesisUtterance(greeting);
     speechSynthesis.speak(utterance);
@@ -53,7 +53,7 @@ recognition.onresult = function () {
   }
 
   if (textInput == "I'm good how are you") {
-    let greeting2 = "I'm good Tomi";
+    let greeting2 = "I'm good";
     todaystime.text(greeting2);
     let utterance = new SpeechSynthesisUtterance(greeting2);
     speechSynthesis.speak(utterance);
